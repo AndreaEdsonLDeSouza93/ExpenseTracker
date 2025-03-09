@@ -20,61 +20,13 @@
 
     <h1>Login Form</h1>
     <label for="userLogin">Username</label>
-    <input type="text" id="userLogin" />
+    <input type="text" minlength="5" id="userLogin" />
     <label for="passwordLogin">Password</label>
-    <input type="password" id="passwordLogin" />
+    <input type="password" minlength="8" id="passwordLogin" />
     
     <button onclick="userLogin()">Submit</button>
 
-    <script type="text/javascript">
-      let userName = document.getElementById("userName");
-      let passwordRegistration = document.getElementById("password");
-
-      function submitRegistration() {
-
-        //console.log(userName.value);
-        //console.log(password.value);
-
-        if(userName.value !== "" && passwordRegistration.value !== ""){
-
-          const users = JSON.parse(localStorage.getItem("users")) || [];
-          
-          const user =  users.find(u => u.username === userName.value);
-
-          if(user){
-            console.log("This username has already been taken.");
-          } else {
-            users.push({username: userName.value, password: passwordRegistration.value});
-            console.log("The user has been registrated.");
-            
-          }
-
-          localStorage.setItem("users", JSON.stringify(users));
-
-          //console.log(JSON.parse(localStorage.getItem("users")));
-
-          userName.value = '';
-          passwordRegistration.value = '';
-
-        } else {
-          console.log("submitRegistration invalid data");
-        }
-      }
-
-      function userLogin(){
-        let userLogin = document.getElementById("userLogin").value;
-        let passwordLogin = document.getElementById("passwordLogin").value;
-
-        const users = JSON.parse(localStorage.getItem("users")) || [];
-
-        const user =  users.find(u => u.username === userLogin && u.password === passwordLogin);
-
-        if(user){
-          console.log("login successfull");
-        } else {
-          console.log("Invalid username or password");
-        }
-      }
-    </script>
+    <script type="text/javascript" src="/js/registration.js"></script>
+    <script type="text/javascript" src="/js/passwordChecker.js"></script>
   </body>
 </html>
